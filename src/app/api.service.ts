@@ -15,4 +15,12 @@ export class ApiService {
   getAllPatients(): Observable<any>{
     return this.http.get(this.baseUrl + '/patients/', {headers: this.httpHeaders});
   }
+  getPatient(id): Observable<any> {
+    return this.http.get(this.baseUrl + '/patients/' + id + "/", { headers: this.httpHeaders });
+  }
+
+  postPatient(patient): Observable<any>{
+    const body = { first_name: patient.first_name, last_name: patient.last_name, sex_at_birth: patient.sex_at_birth, birth_day: patient.birth_day, email: patient.email, notes: patient.notes}
+    return this.http.post(this.baseUrl + '/patients/', body, { headers: this.httpHeaders })
+  }
 }

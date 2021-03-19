@@ -8,22 +8,10 @@ import { ApiService } from './api.service';
   providers: [ApiService]
 })
 export class AppComponent {
-  patients = [{
-    first_name: 'test',
-  }];
 
-  constructor(private api:ApiService) {
-    this.getPatients();
+  constructor() {
+
   }
 
-  getPatients = () => {
-    this.api.getAllPatients().subscribe(
-      data => {
-        this.patients = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
+
 }

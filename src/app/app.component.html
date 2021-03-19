@@ -1,16 +1,2 @@
-<div class="container">
-  <div class="row">
-    <h1>List of Patients</h1>
-    <ul *ngFor="let patient of patients">
-      <li >
-        <h2>First name: {{patient.first_name | titlecase}}</h2>
-        <h2>Last name: {{patient.last_name |titlecase}}</h2>
-        <h3>Sex: {{patient.sex_at_birth}}</h3>
-        <h3>Birth: {{patient.birth_date}}</h3>
-        <h3>email: {{patient.email}}</h3>
-        <h3>notes: {{patient.notes}}</h3>
-      </li>
-    </ul>
-  </div>
-</div>
-
+<h1>Patients App</h1>
+<router-outlet></router-outlet>
