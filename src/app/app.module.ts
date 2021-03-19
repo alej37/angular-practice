@@ -1,29 +1,36 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MainModule } from './main/main.module'
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AddPatientComponent } from './add-patient/add-patient.component';
-import { ShowPatientComponent } from './show-patient/show-patient.component';
-import { PatientsComponent } from './patients/patients.component';
+
 import { FormsModule } from '@angular/forms'
+import { Routes, RouterModule } from '@angular/router';
+import { ApiService } from './api.service';
+
+
+const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'patients'}
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddPatientComponent,
-    ShowPatientComponent,
-    PatientsComponent
   ],
   imports: [
     BrowserModule,
+    MainModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  exports: [RouterModule, FormsModule],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from '../../api.service';
 
 
 @Component({
@@ -10,8 +10,7 @@ import { ApiService } from '../api.service';
 
 })
 export class ShowPatientComponent implements OnInit {
-  patient =[]
-
+  @Input() patient;
   constructor(private api: ApiService) { }
 
   patientClicked = (patient) => {

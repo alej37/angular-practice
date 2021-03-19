@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-add-patient',
@@ -10,7 +10,7 @@ import { ApiService } from '../api.service';
 })
 export class AddPatientComponent implements OnInit {
 
-  constructor(private api: ApiService) {
+  constructor() {
     // this.createdPatient = {id: -1, first_name:'',last_name:'',sex_at_birth:'', birth_day:'', email:'', notes:''}
   }
 

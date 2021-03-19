@@ -1,0 +1,4 @@
+<div class="layout">
+  <app-patients [patients]="patients" (selectPatient)='selectPatient($event)'></app-patients>
+  <app-show-patient [patient]="this.selectedPatient"></app-show-patient>
+</div>
