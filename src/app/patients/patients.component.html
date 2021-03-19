@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <p>Add a patient</p>
-    <form action="">
+    <form #myForm='ngForm'action="">
       <label for="">First Name</label>
       <input type="text" [(ngModel)]=createdPatient.first_name name="first_name">
       <br>
@@ -22,7 +22,10 @@
       <input type="text" [(ngModel)]=createdPatient.last_name name='last_name'>
       <br>
       <label for="">Sex</label>
-      <input type="text" [(ngModel)]=createdPatient.sex_at_birth name='sex_at_birth'>
+      <input type="radio" [(ngModel)]=createdPatient.sex_at_birth name='sex_at_birth' value="Male">
+      <label for="Male">Male</label>
+      <input type="radio" [(ngModel)]=createdPatient.sex_at_birth name='sex_at_birth' value="Female">
+      <label for="Female">Female</label>
       <br>
       <label for="">Birth</label>
       <input type="date" [(ngModel)]=createdPatient.birth_date name='birth_date'>
@@ -33,7 +36,7 @@
       <label for="">notes</label>
       <textarea name="" id="" cols="30" rows="10" maxlength="400" [(ngModel)]=createdPatient.notes name='notes'></textarea>
       <br>
-      <button (click)="addPatient()">Submit</button>
+      <button (click)="addPatient(); myForm.reset()">Submit</button>
     </form>
   </div>
 </div>
