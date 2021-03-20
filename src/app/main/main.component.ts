@@ -12,7 +12,8 @@ export class MainComponent implements OnInit {
   createPatient = null;
   editedPatient = null;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) {
+  }
 
   getPatients = () => {
     this.api.getAllPatients().subscribe(
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit {
   }
 
   deletedPatient(patient) {
-    console.log(patient.first_name)
+    this.api.deletePatient(patient.id).subscribe()
 
   }
 

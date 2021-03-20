@@ -11,7 +11,9 @@ import { ApiService } from '../../api.service';
 })
 export class AddPatientComponent implements OnInit {
   patientForm;
+  id = null
   @Input() set patient(Patient){
+    this.id = Patient.id;
     this.patientForm = new FormGroup({
       first_name: new FormControl(Patient.first_name),
       last_name: new FormControl(Patient.last_name),
@@ -30,10 +32,17 @@ export class AddPatientComponent implements OnInit {
 
   saveForm() {
     console.log(this.patientForm.value)
-    this.api.postPatient(this.patientForm.value).subscribe(
-      results => console.log(results),
-      error => console.log(error)
-    )
+    if (this.id){
+      this.api.updatePatient(this.id, this.patientForm.value).subscribe(
+        results => console.log(results),
+        error => console.log(error)
+      )
+    } else {
+      this.api.postPatient(this.patientForm.value).subscribe(
+        results => console.log(results),
+        error => console.log(error)
+      )
+    }
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 <p>Patient Form</p>
-<form [formGroup]="patientForm" (ngSubmit)="saveForm()">
+<form #myForm='ngForm' [formGroup]="patientForm" (ngSubmit)="saveForm() ; myForm.reset()">
   <label for="">First Name</label>
   <input type="text" formControlName="first_name">
   <br>
