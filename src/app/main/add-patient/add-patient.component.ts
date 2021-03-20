@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl} from '@angular/forms';
 import { ApiService } from '../../api.service';
-import { FormGroup, FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-add-patient',
@@ -10,34 +10,31 @@ import { FormGroup, FormControl } from '@angular/forms'
 
 })
 export class AddPatientComponent implements OnInit {
-  @Input() patient;
+  patientForm;
+  @Input() set patient(Patient){
+    this.patientForm = new FormGroup({
+      first_name: new FormControl(Patient.first_name),
+      last_name: new FormControl(Patient.last_name),
+      sex_at_birth: new FormControl(Patient.sex_at_birth),
+      birth_date: new FormControl(Patient.birth_date),
+      email: new FormControl(Patient.email),
+      notes: new FormControl(Patient.notes)
+    })
 
-  patientForm = new FormGroup({
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    sex_at_birth: new FormControl(''),
-    birth_day: new FormControl(''),
-    email: new FormControl(''),
-    notes: new FormControl('')
-  })
-  constructor() {
+  }
+
+  constructor(private api:ApiService) {
     // this.createdPatient = {id: -1, first_name:'',last_name:'',sex_at_birth:'', birth_day:'', email:'', notes:''}
   }
 
+
   saveForm() {
     console.log(this.patientForm.value)
+    this.api.postPatient(this.patientForm.value).subscribe(
+      results => console.log(results),
+      error => console.log(error)
+    )
   }
-  // addPatient = () => {
-  //   this.api.postPatient().subscribe(
-  //     data => {
-  //       this.patients.push(data)
-  //     },
-  //     error => {
-  //       console.log(error)
-  //     }
-  //   )
-
-  // }
 
   ngOnInit(): void {
   }

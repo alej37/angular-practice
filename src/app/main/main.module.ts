@@ -7,7 +7,7 @@ import { ApiService } from '../api.service';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { ShowPatientComponent } from './show-patient/show-patient.component';
 import { PatientsComponent } from './patients/patients.component';
-import { FormsModule } from '@angular/forms'
+
 
 const routes: Routes = [
   { path: 'patients', component: MainComponent }
@@ -20,12 +20,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
     RouterModule.forChild(routes)
   ],
   exports: [
     RouterModule,
-    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class MainModule { }

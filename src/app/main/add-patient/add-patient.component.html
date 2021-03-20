@@ -1,22 +1,52 @@
 <p>Patient Form</p>
 <form [formGroup]="patientForm" (ngSubmit)="saveForm()">
   <label for="">First Name</label>
-  <input type="text" FormControlName="first_name">
+  <input type="text" formControlName="first_name">
   <br>
   <label for="">Last Name</label>
-  <input type="text" FormControlName='last_name'>
+  <input type="text" formControlName='last_name'>
   <br>
   <label for="">Sex</label>
-  <input type="text" FormControlName='sex_at_birth'>
+  <input type="radio" formControlName='sex_at_birth' value="Male">
+  <label for="Male">Male</label>
+  <input type="radio" formControlName='sex_at_birth' value="Female">
+  <label for="Female">Female</label>
   <br>
   <label for="">Birth</label>
-  <input type="date" FormControlName='birth_date'>
+  <input type="date" formControlName='birth_date'>
   <br>
   <label for="">email</label>
-  <input type="email" FormControlName='email'>
+  <input type="email" formControlName='email'>
   <br>
   <label for="">notes</label>
-  <textarea name="" id="" cols="30" rows="10" maxlength="400" FormControlName='notes'></textarea>
+  <textarea name="" id="" cols="30" rows="10" maxlength="400" formControlName='notes'></textarea>
   <br>
   <button type="submit">Submit</button>
 </form>
+
+<!-- <p>Add a patient</p>
+<form #myForm='ngForm'>
+  <label for="">First Name</label>
+  <input type="text" [(ngModel)]=first_name name="first_name">
+  <br>
+  <label for="">Last Name</label>
+  <input type="text" [(ngModel)]=last_name name='last_name'>
+  <br>
+  <label for="">Sex</label>
+  <input type="radio" [(ngModel)]=sex_at_birth name='sex_at_birth' value="Male">
+  <label for="Male">Male</label>
+  <input type="radio" [(ngModel)]=sex_at_birth name='sex_at_birth' value="Female">
+  <label for="Female">Female</label>
+  <br>
+  <label for="">Birth</label>
+  <input type="date" [(ngModel)]=birth_date name='birth_date'>
+  <br>
+  <label for="">email</label>
+  <input type="email" [(ngModel)]=email name='email'>
+  <br>
+  <label for="">notes</label>
+  <textarea name="" id="" cols="30" rows="10" maxlength="400" [(ngModel)]=notes name='notes'></textarea>
+  <br>
+  <button (click)="addPatient()">Submit</button>
+
+</form> -->
