@@ -5,6 +5,8 @@
   ></app-patients>
   <div>
     <app-show-patient [patient]="this.selectedPatient"></app-show-patient>
-    <app-add-patient *ngIf="editedPatient" [patient]="this.editedPatient"></app-add-patient>
+    <app-add-patient *ngIf="editedPatient" [patient]="this.editedPatient"
+      (patientCreated)="patientCreated($event)" (patientUpdated)="patientUpdated($event)"
+    ></app-add-patient>
   </div>
 </div>

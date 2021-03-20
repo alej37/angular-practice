@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { ApiService } from '../../api.service';
 
@@ -12,6 +12,11 @@ import { ApiService } from '../../api.service';
 export class AddPatientComponent implements OnInit {
   patientForm;
   id = null
+  @Output() patientCreated = new EventEmitter();
+  @Output() patientUpdated = new EventEmitter();
+
+
+
   @Input() set patient(Patient){
     this.id = Patient.id;
     this.patientForm = new FormGroup({
@@ -31,15 +36,14 @@ export class AddPatientComponent implements OnInit {
 
 
   saveForm() {
-    console.log(this.patientForm.value)
     if (this.id){
       this.api.updatePatient(this.id, this.patientForm.value).subscribe(
-        results => console.log(results),
+        result => this.patientUpdated.emit(result),
         error => console.log(error)
       )
     } else {
       this.api.postPatient(this.patientForm.value).subscribe(
-        results => console.log(results),
+        result => this.patientCreated.emit(result),
         error => console.log(error)
       )
     }

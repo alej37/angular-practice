@@ -38,13 +38,30 @@ export class MainComponent implements OnInit {
 
   }
 
+  patientUpdated(patient) {
+    const index = this.patients.findIndex( pat => pat.id === patient.id);
+    if(index >=0) {
+      this.patients[index] = patient
+    }
+    this.editedPatient = null;
+  }
+
   createNewPatient() {
-    this.editedPatient = { id: -1, first_name: '', last_name: '', sex_at_birth: '', birth_day: '', email: '', notes: '' };
+    this.editedPatient = { first_name: '', last_name: '', sex_at_birth: '', birth_day: '', email: '', notes: '' };
     this.selectedPatient = null;
   }
 
+  patientCreated(patient) {
+    this.patients.push(patient);
+    this.editedPatient = null
+  }
+
   deletedPatient(patient) {
-    this.api.deletePatient(patient.id).subscribe()
+    this.api.deletePatient(patient.id).subscribe(
+      data => {
+        this.patients = this.patients.filter(pat => pat.id !== patient.id)
+      }
+    )
 
   }
 
