@@ -1,7 +1,10 @@
-<h1>Patient details</h1>
-<h3> Patient name: {{patient?.first_name|titlecase}}</h3>
-<h3>Birth: {{patient?.birth_date}}</h3>
-<h3>Sex: {{patient?.sex_at_birth|titlecase}}</h3>
-<h3>email: {{patient?.email}}</h3>
-<h3>notes: {{patient?.notes}}</h3>
+<div *ngIf="patient">
+  <h1>Patient details</h1>
+  <h3> Patient name: {{patient.first_name|titlecase}}</h3>
+  <h3>Birth: {{patient.birth_date}}</h3>
+  <h3>Sex: {{patient.sex_at_birth|titlecase}}</h3>
+  <h3>email: {{patient.email}}</h3>
+  <h3>notes: {{patient.notes}}</h3>
+</div>
+
 

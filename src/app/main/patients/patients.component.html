@@ -1,13 +1,18 @@
 
 <h1>List of Patients</h1>
-<button routerLink='create'>Add Patient</button>
-<ul *ngFor="let patient of patients">
-  <li>
-    <h2>Name: <a (click)="patientClicked(patient)">{{patient.first_name | titlecase}} {{patient.last_name |titlecase}}</a></h2>
-    <button (click)="removePatient(patient.id)">Delete</button>
+<button (click)="newPatient()">Add Patient</button>
+<div *ngFor="let patient of patients">
+  <ul>
+    <li>
+      <h2>Name: <a (click)="patientClicked(patient)">{{patient.first_name | titlecase}} {{patient.last_name |titlecase}}</a></h2>
+      <button (click)="editPatient(patient)">Edit</button>
+      <button (click)="removePatient(patient)">Delete</button>
 
-  </li>
-</ul>
+
+    </li>
+  </ul>
+
+</div>
   <!-- <div class="row">
     <p>Add a patient</p>
     <form #myForm='ngForm'action="">

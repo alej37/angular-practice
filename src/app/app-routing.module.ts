@@ -5,9 +5,9 @@ import {ShowPatientComponent} from './main/show-patient/show-patient.component';
 import {AddPatientComponent} from './main/add-patient/add-patient.component';
 
 const routes: Routes = [
-  {path: 'patients', component: PatientsComponent},
-  {path: 'create', component: AddPatientComponent},
-  // {path: 'show', component: ShowPatientComponent},
+  // {path: 'patients', component: PatientsComponent},
+  // // {path: 'create', component: AddPatientComponent},
+  // // {path: 'show', component: ShowPatientComponent},
 
 ]
 

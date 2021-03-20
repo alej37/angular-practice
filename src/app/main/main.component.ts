@@ -9,6 +9,8 @@ import { ApiService } from '../api.service';
 export class MainComponent implements OnInit {
   patients: any = []
   selectedPatient = null;
+  createPatient = null;
+  editedPatient = null;
 
   constructor(private api: ApiService) { }
 
@@ -25,9 +27,25 @@ export class MainComponent implements OnInit {
 
   selectPatient(patient) {
     this.selectedPatient = patient;
-    console.log(this.selectedPatient)
+    this.editedPatient = null;
+
   }
 
+  editPatient(patient) {
+    this.editedPatient = patient;
+    this.selectedPatient = null;
+
+  }
+
+  createNewPatient() {
+    this.editedPatient = { id: -1, first_name: '', last_name: '', sex_at_birth: '', birth_day: '', email: '', notes: '' };
+    this.selectedPatient = null;
+  }
+
+  deletedPatient(patient) {
+    console.log(patient.first_name)
+
+  }
 
   ngOnInit() {
     this.getPatients();

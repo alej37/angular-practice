@@ -7,7 +7,7 @@ import { MainModule } from './main/main.module'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { FormsModule } from '@angular/forms'
+
 import { Routes, RouterModule } from '@angular/router';
 import { ApiService } from './api.service';
 
@@ -26,10 +26,9 @@ const routes: Routes = [
     MainModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule, FormsModule],
+  exports: [RouterModule,],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
